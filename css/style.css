@@ -1,0 +1,694 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    padding-top: 76px;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1030;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0.5rem 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+section {
+    min-height: 100vh;
+    padding: 5rem 2rem;
+}
+
+.projets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.projet {
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.projet img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input, textarea {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Style pour les timelines */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline-item {
+    border-left: 4px solid #0d6efd;
+    position: relative;
+    margin-left: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: #0d6efd;
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    border-radius: 50%;
+}
+
+.timeline-item .card-body {
+    padding: 1.5rem;
+}
+
+.timeline-item .location {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.timeline-item .location i {
+    color: #0d6efd;
+}
+
+.timeline-item:hover {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
+
+/* Grilles pour les compétences et qualités */
+.competences-grid, .qualites-grid, .interets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.competence-categorie, .qualite, .interet {
+    background: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Style pour les dates */
+.date {
+    color: #666;
+    font-style: italic;
+}
+
+/* Style pour les listes */
+.realisations {
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Style pour les icônes */
+.interet {
+    text-align: center;
+    padding: 2rem;
+}
+
+.interet i {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.interet:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    /* Navigation */
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    /* Ajustement des cartes */
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    /* Ajustement des grilles */
+    .competences-grid,
+    .qualites-grid,
+    .interets-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* Ajustement de la timeline */
+    .timeline-item {
+        margin-left: 15px;
+    }
+    
+    /* Ajustement des marges et paddings */
+    section {
+        padding: 3rem 1rem;
+    }
+    
+    /* Ajustement de la taille des textes */
+    h1.display-4 {
+        font-size: 2.5rem;
+    }
+    
+    /* Ajustement des cartes de qualités et intérêts */
+    .qualite-card,
+    .interet-card {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Ajustements plus fins pour très petits écrans */
+    .navbar-profile-img {
+        width: 25px;
+        height: 25px;
+    }
+    
+    /* Réduction des marges et paddings */
+    .card-body {
+        padding: 1rem;
+    }
+    
+    /* Ajustement des icônes */
+    .fa-3x {
+        font-size: 2em;
+    }
+    
+    /* Ajustement du footer */
+    .social-links a {
+        width: 35px;
+        height: 35px;
+        margin: 0 0.5rem;
+    }
+    
+    /* Ajustement de l'image de profil sur la page d'accueil */
+    .presentation img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* Ajustement des marges pour le contenu principal */
+    .formation-page main,
+    .competences-page main,
+    .experience-page main,
+    .qualites-page main,
+    .interets-page main {
+        margin-top: 65px;
+    }
+}
+
+/* Ajustements pour les appareils en mode paysage */
+@media (max-height: 500px) and (orientation: landscape) {
+    .presentation img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    section {
+        padding: 2rem 1rem;
+    }
+    
+    .card-body {
+        padding: 0.75rem;
+    }
+}
+
+/* Ajustements pour les grands écrans */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    .competences-grid,
+    .qualites-grid,
+    .interets-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+/* Hover effects */
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Custom colors */
+.bg-custom-light {
+    background-color: #f8f9fa;
+}
+
+/* Icon styles */
+.feature-icon {
+    font-size: 2rem;
+    color: #0d6efd;
+    margin-bottom: 1rem;
+}
+
+/* Styles pour la page d'accueil */
+.contact-info {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+.contact-info i {
+    color: #0d6efd;
+    width: 20px;
+    text-align: center;
+}
+
+.intro {
+    text-align: justify;
+    line-height: 1.8;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn i {
+    font-size: 1.1em;
+}
+
+/* Animation pour l'image de profil */
+.presentation img {
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.presentation img:hover {
+    transform: scale(1.05);
+}
+
+.contact-info a {
+    color: #0d6efd;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #0b5ed7;
+    text-decoration: underline !important;
+}
+
+/* Styles pour le footer */
+footer {
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+}
+
+.quick-links a {
+    color: #6c757d;
+    transition: color 0.3s ease;
+}
+
+.quick-links a:hover {
+    color: #0d6efd;
+}
+
+.contact-footer {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.contact-footer i {
+    width: 20px;
+    color: #0d6efd;
+}
+
+footer hr {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styles pour les cartes de compétences */
+.competences-grid .card {
+    border: none;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.competences-grid .card:hover {
+    transform: translateY(-5px);
+}
+
+.competences-grid .card-title {
+    color: #333;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.competences-grid .card-body {
+    padding: 1.5rem;
+}
+
+.competences-grid ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.competences-grid ul li:last-child {
+    border-bottom: none;
+}
+
+.competences-grid i {
+    width: 25px;
+    text-align: center;
+}
+
+/* Styles pour les cartes de qualités */
+.qualite-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.qualite-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.qualite-card i {
+    transition: transform 0.3s ease;
+}
+
+.qualite-card:hover i {
+    transform: scale(1.1);
+}
+
+.qualite-card .card-title {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.qualite-card .card-text {
+    color: #666;
+}
+
+/* Style pour l'image de profil dans la navbar */
+.navbar-profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #0d6efd;
+    transition: transform 0.3s ease;
+}
+
+/* Animation au survol */
+.navbar-brand:hover .navbar-profile-img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Styles pour l'info-bulle personnalisée */
+.custom-tooltip {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1040;
+}
+
+.tooltip-content {
+    text-align: center;
+}
+
+.tooltip-name {
+    font-weight: bold;
+    margin: 0;
+    color: #0d6efd;
+}
+
+.tooltip-title {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Thèmes de couleurs pour les différentes sections */
+:root {
+    /* Couleurs principales */
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    
+    /* Thème Formation */
+    --formation-primary: #2c3e50;
+    --formation-secondary: #34495e;
+    --formation-accent: #3498db;
+    
+    /* Thème Compétences */
+    --competences-primary: #16a085;
+    --competences-secondary: #1abc9c;
+    --competences-accent: #2ecc71;
+    
+    /* Thème Expérience */
+    --experience-primary: #8e44ad;
+    --experience-secondary: #9b59b6;
+    --experience-accent: #d35400;
+    
+    /* Thème Qualités */
+    --qualites-primary: #c0392b;
+    --qualites-secondary: #e74c3c;
+    --qualites-accent: #f39c12;
+    
+    /* Thème Intérêts */
+    --interets-primary: #2980b9;
+    --interets-secondary: #3498db;
+    --interets-accent: #1abc9c;
+}
+
+/* Styles spécifiques pour la page Formation */
+.formation-page .timeline-item {
+    border-left-color: var(--formation-accent);
+}
+
+.formation-page .timeline-item::before {
+    background: var(--formation-accent);
+}
+
+.formation-page .card i {
+    color: var(--formation-primary);
+}
+
+/* Styles spécifiques pour la page Compétences */
+.competences-page .card {
+    border-color: var(--competences-primary);
+}
+
+.competences-page .card-title i {
+    color: var(--competences-primary);
+}
+
+.competences-page .card:hover {
+    box-shadow: 0 5px 20px rgba(22, 160, 133, 0.2);
+}
+
+/* Styles spécifiques pour la page Expérience */
+.experience-page .timeline-item {
+    border-left-color: var(--experience-accent);
+}
+
+.experience-page .timeline-item::before {
+    background: var(--experience-accent);
+}
+
+.experience-page .card i {
+    color: var(--experience-primary);
+}
+
+/* Styles spécifiques pour la page Qualités */
+.qualites-page .qualite-card i {
+    color: var(--qualites-primary);
+}
+
+.qualites-page .qualite-card:hover {
+    box-shadow: 0 5px 20px rgba(192, 57, 43, 0.2);
+}
+
+.qualites-page .card-title {
+    color: var(--qualites-primary);
+}
+
+/* Styles spécifiques pour la page Intérêts */
+.interets-page .interet-card i {
+    color: var(--interets-primary);
+}
+
+.interets-page .interet-card:hover {
+    box-shadow: 0 5px 20px rgba(41, 128, 185, 0.2);
+}
+
+.interets-page .card-title {
+    color: var(--interets-primary);
+}
+
+/* Styles communs pour les effets de survol */
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Adaptation des boutons selon les pages */
+.formation-page .btn-primary {
+    background-color: var(--formation-primary);
+    border-color: var(--formation-primary);
+}
+
+.competences-page .btn-primary {
+    background-color: var(--competences-primary);
+    border-color: var(--competences-primary);
+}
+
+.experience-page .btn-primary {
+    background-color: var(--experience-primary);
+    border-color: var(--experience-primary);
+}
+
+.qualites-page .btn-primary {
+    background-color: var(--qualites-primary);
+    border-color: var(--qualites-primary);
+}
+
+.interets-page .btn-primary {
+    background-color: var(--interets-primary);
+    border-color: var(--interets-primary);
+}
+
+/* Pages secondaires (tout sauf accueil) */
+.formation-page,
+.competences-page,
+.experience-page,
+.qualites-page,
+.interets-page {
+    padding-top: 0;
+}
+
+/* Ajustement du conteneur principal pour les pages secondaires */
+.formation-page main,
+.competences-page main,
+.experience-page main,
+.qualites-page main,
+.interets-page main {
+    margin-top: 76px; /* Hauteur du header */
+}
+
+/* Ajustement de la section pour éviter le chevauchement */
+.formation-page section,
+.competences-page section,
+.experience-page section,
+.qualites-page section,
+.interets-page section {
+    padding-top: 2rem;
+}
+
+/* Style pour le menu mobile */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        z-index: 1020;
+    }
+
+    .navbar-nav {
+        padding: 0.5rem 0;
+    }
+
+    .navbar-nav .nav-item {
+        padding: 0.5rem 0;
+    }
+    
+    /* Assurer que le contenu principal passe sous le menu */
+    main {
+        position: relative;
+        z-index: 1;
+    }
+} 

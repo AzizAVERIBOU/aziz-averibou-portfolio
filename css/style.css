@@ -708,61 +708,96 @@ footer hr {
     }
 }
 
-/* Ajustements spécifiques pour Safari iOS */
+/* Ajustements globaux pour Safari */
 @supports (-webkit-touch-callout: none) {
-    /* Fix pour le viewport height sur iOS */
-    .min-vh-100 {
-        min-height: -webkit-fill-available;
-    }
-
-    /* Fix pour le menu fixe sur iOS */
-    .navbar {
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        -webkit-transform: translateZ(0);
-        -webkit-backface-visibility: hidden;
-    }
-
-    /* Fix pour le scroll sur iOS */
-    body {
-        -webkit-overflow-scrolling: touch;
+    html {
         height: -webkit-fill-available;
     }
 
-    /* Fix pour le menu déroulant sur iOS */
-    .navbar-collapse {
-        max-height: calc(100vh - 56px);
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Fix pour les animations sur iOS */
-    .card, .navbar-profile-img, .presentation img {
-        -webkit-transform: translateZ(0);
-        -webkit-backface-visibility: hidden;
-    }
-}
-
-/* Ajustement du z-index pour Safari */
-.navbar {
-    z-index: 1040;
-}
-
-.navbar-collapse {
-    z-index: 1030;
-}
-
-/* Fix pour le débordement sur petits écrans */
-@media (max-width: 576px) {
-    .container {
-        overflow-x: hidden;
-    }
-    
     body {
-        overflow-x: hidden;
+        min-height: -webkit-fill-available;
+        position: relative;
+        padding-top: 0; /* Enlever le padding-top par défaut */
+    }
+
+    /* Fix pour le header fixe sur Safari */
+    header {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
         width: 100%;
+        z-index: 1030;
+    }
+
+    .navbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1030;
+    }
+
+    /* Ajustement du contenu principal */
+    main {
+        position: relative;
+        z-index: 1;
+        padding-top: 56px; /* Hauteur de la navbar */
+    }
+
+    /* Fix pour les sections */
+    section {
+        min-height: -webkit-fill-available;
+        padding: 2rem 1rem;
+    }
+
+    /* Fix pour le menu mobile */
+    @media (max-width: 991px) {
+        .navbar-collapse {
+            position: fixed;
+            top: 56px; /* Hauteur de la navbar */
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 1rem;
+            max-height: calc(100vh - 56px);
+            overflow-y: auto;
+        }
+    }
+
+    /* Fix pour les animations */
+    .card, 
+    .navbar-profile-img, 
+    .presentation img,
+    .timeline-item,
+    .qualite-card,
+    .interet-card {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Ajustements spécifiques pour iOS */
+@media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+        .min-vh-100 {
+            height: 100vh;
+            height: -webkit-fill-available;
+        }
+    }
+}
+
+/* Fix pour le débordement horizontal sur iOS */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ajustements pour le mode paysage sur iOS */
+@media (orientation: landscape) {
+    @supports (-webkit-touch-callout: none) {
+        .min-vh-100 {
+            min-height: -webkit-fill-available;
+        }
     }
 } 

@@ -7,7 +7,7 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    padding-top: 76px;
+    padding-top: 56px;
 }
 
 header {
@@ -169,84 +169,99 @@ button {
 
 /* Responsive design */
 @media (max-width: 768px) {
-    /* Navigation */
-    .navbar-nav {
-        text-align: center;
+    /* Ajustement du header pour mobile */
+    .navbar {
+        padding: 0.5rem 1rem;
     }
-    
-    /* Ajustement des cartes */
+
+    .navbar-profile-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Ajustement du menu déroulant mobile */
+    .navbar-collapse {
+        background: white;
+        padding: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Ajustement des sections pour mobile */
+    section {
+        padding: 2rem 1rem;
+    }
+
+    /* Ajustement des cartes pour mobile */
     .card {
         margin-bottom: 1rem;
     }
-    
-    /* Ajustement des grilles */
-    .competences-grid,
-    .qualites-grid,
-    .interets-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    /* Ajustement de la timeline */
-    .timeline-item {
-        margin-left: 15px;
-    }
-    
-    /* Ajustement des marges et paddings */
-    section {
-        padding: 3rem 1rem;
-    }
-    
+
     /* Ajustement de la taille des textes */
     h1.display-4 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
-    
-    /* Ajustement des cartes de qualités et intérêts */
-    .qualite-card,
-    .interet-card {
-        margin-bottom: 1rem;
+
+    /* Ajustement des marges pour le contenu principal */
+    main {
+        margin-top: 60px;
+    }
+
+    /* Ajustement du footer pour mobile */
+    footer {
+        padding: 2rem 1rem;
     }
 }
 
+/* Ajustements spécifiques pour très petits écrans */
 @media (max-width: 576px) {
-    /* Ajustements plus fins pour très petits écrans */
-    .navbar-profile-img {
-        width: 25px;
-        height: 25px;
+    /* Ajustement des grilles */
+    .row {
+        margin: 0;
     }
-    
-    /* Réduction des marges et paddings */
-    .card-body {
-        padding: 1rem;
+
+    .col-md-6 {
+        padding: 0.5rem;
     }
-    
+
     /* Ajustement des icônes */
     .fa-3x {
         font-size: 2em;
     }
-    
-    /* Ajustement du footer */
-    .social-links a {
-        width: 35px;
-        height: 35px;
-        margin: 0 0.5rem;
+
+    /* Ajustement des marges et paddings */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
     }
-    
-    /* Ajustement de l'image de profil sur la page d'accueil */
-    .presentation img {
-        width: 150px;
-        height: 150px;
+
+    /* Ajustement de la timeline */
+    .timeline-item {
+        margin-left: 10px;
+        padding: 0.5rem;
     }
-    
-    /* Ajustement des marges pour le contenu principal */
-    .formation-page main,
-    .competences-page main,
-    .experience-page main,
-    .qualites-page main,
-    .interets-page main {
-        margin-top: 65px;
-    }
+}
+
+/* Fix pour le menu mobile qui chevauche le contenu */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1030;
+}
+
+body {
+    padding-top: 56px; /* Hauteur de la navbar */
+}
+
+/* Assurer que le contenu passe sous la navbar */
+main {
+    position: relative;
+    z-index: 1;
 }
 
 /* Ajustements pour les appareils en mode paysage */
@@ -690,5 +705,64 @@ footer hr {
     main {
         position: relative;
         z-index: 1;
+    }
+}
+
+/* Ajustements spécifiques pour Safari iOS */
+@supports (-webkit-touch-callout: none) {
+    /* Fix pour le viewport height sur iOS */
+    .min-vh-100 {
+        min-height: -webkit-fill-available;
+    }
+
+    /* Fix pour le menu fixe sur iOS */
+    .navbar {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+    }
+
+    /* Fix pour le scroll sur iOS */
+    body {
+        -webkit-overflow-scrolling: touch;
+        height: -webkit-fill-available;
+    }
+
+    /* Fix pour le menu déroulant sur iOS */
+    .navbar-collapse {
+        max-height: calc(100vh - 56px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Fix pour les animations sur iOS */
+    .card, .navbar-profile-img, .presentation img {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+    }
+}
+
+/* Ajustement du z-index pour Safari */
+.navbar {
+    z-index: 1040;
+}
+
+.navbar-collapse {
+    z-index: 1030;
+}
+
+/* Fix pour le débordement sur petits écrans */
+@media (max-width: 576px) {
+    .container {
+        overflow-x: hidden;
+    }
+    
+    body {
+        overflow-x: hidden;
+        width: 100%;
     }
 } 
